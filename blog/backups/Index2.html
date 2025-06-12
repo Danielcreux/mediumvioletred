@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mi Blog Personal</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #ffd700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #3a5795;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .meta i {
+            margin-right: 5px;
+        }
+
+        .card-content p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #4b6cb7;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+            color: #3a5795;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #4b6cb7;
+            padding-bottom: 10px;
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .about-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #4b6cb7;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .popular-posts li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+        }
+
+        .popular-posts li:last-child {
+            border-bottom: none;
+        }
+
+        .popular-posts img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .popular-posts h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .popular-posts .date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .categories li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories li:last-child {
+            border-bottom: none;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            transition: color 0.3s ease;
+        }
+
+        .categories a:hover {
+            color: #4b6cb7;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #edf2f7;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #4b6cb7;
+            color: white;
+            cursor: pointer;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #4b6cb7;
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #4b6cb7;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #3a5795;
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #4b6cb7;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+<style>
+            @font-face {
+                font-family: 'MyCustomFont';
+                src: url('MyCustomFont.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            
+            /* Estilos para las etiquetas seleccionadas */
+            button {
+                font-family: 'MyCustomFont', sans-serif;
+            }
+            </style></head>
+<body>
+<!-- Encabezado -->
+<header>
+<div class="container header-content">
+<div class="logo">
+<i class="fas fa-blog"></i>
+                BlogSimple
+            </div>
+<nav>
+<ul>
+<li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+<li><a href="#"><i class="fas fa-folder"></i> Categorías</a></li>
+<li><a href="#"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+<li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<h1>Explora el Mundo de las Ideas</h1>
+<p>Un espacio para compartir pensamientos, experiencias y conocimiento</p>
+<a class="btn" href="#">Suscríbete al Blog</a>
+</div>
+</section>
+<!-- Contenido Principal -->
+<main class="container">
+<div class="blog-grid">
+<!-- Artículo 1 -->
+<article class="blog-card">
+<div class="card-img">
+<img alt="Tecnología" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"/>
+</div>
+<div class="card-content">
+<span class="category">Tecnología</span>
+<h3>El Futuro de la Inteligencia Artificial en 2025</h3>
+<div class="meta">
+<span><i class="far fa-user"></i> Carlos Martínez</span>
+<span><i class="far fa-calendar"></i> 12 Junio, 2025</span>
+<span><i class="far fa-comment"></i> 24 Comentarios</span>
+</div>
+<p>Exploramos las tendencias emergentes en IA y cómo están transformando industrias enteras. Desde asistentes virtuales hasta diagnósticos médicos avanzados, la revolución está aquí.</p>
+<a class="read-more" href="#">Leer más <i class="fas fa-arrow-right"></i></a>
+</div>
+</article>
+<!-- Artículo 2 -->
+<article class="blog-card">
+<div class="card-img">
+<img alt="Viajes" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"/>
+</div>
+<div class="card-content">
+<span class="category">Viajes</span>
+<h3>10 Lugares Escondidos en Europa que Debes Conocer</h3>
+<div class="meta">
+<span><i class="far fa-user"></i> Ana Rodríguez</span>
+<span><i class="far fa-calendar"></i> 8 Junio, 2025</span>
+<span><i class="far fa-comment"></i> 18 Comentarios</span>
+</div>
+<p>Descubre destinos europeos menos conocidos pero increíblemente hermosos. Desde pueblos costeros en Croacia hasta valles alpinos en Suiza, estos lugares te sorprenderán.</p>
+<a class="read-more" href="#">Leer más <i class="fas fa-arrow-right"></i></a>
+</div>
+</article>
+<!-- Artículo 3 -->
+<article class="blog-card">
+<div class="card-img">
+<img alt="Salud" src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"/>
+</div>
+<div class="card-content">
+<span class="category">Salud</span>
+<h3>Hábitos Matutinos para Mejorar tu Productividad</h3>
+<div class="meta">
+<span><i class="far fa-user"></i> Javier López</span>
+<span><i class="far fa-calendar"></i> 5 Junio, 2025</span>
+<span><i class="far fa-comment"></i> 32 Comentarios</span>
+</div>
+<p>La forma en que comienzas tu día determina tu productividad. Descubre rutinas científicamente probadas para maximizar tu energía y enfoque durante todo el día.</p>
+<a class="read-more" href="#">Leer más <i class="fas fa-arrow-right"></i></a>
+</div>
+</article>
+</div>
+<!-- Barra lateral -->
+<aside class="sidebar">
+<!-- Acerca de -->
+<div class="about">
+<div class="about-img">
+<img alt="Autor" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1374&amp;q=80"/>
+</div>
+<div>
+<h3>Sobre el Autor</h3>
+<p>Hola, soy Alex. Apasionado por compartir conocimiento a través de este blog. Amo la tecnología, los viajes y el desarrollo personal.</p>
+</div>
+</div>
+<!-- Posts Populares -->
+<div>
+<h3>Artículos Populares</h3>
+<ul class="popular-posts">
+<li>
+<img alt="Popular" src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1400&amp;q=80"/>
+<div>
+<h4>Cómo Aprender a Programar en 6 Meses</h4>
+<span class="date">15 Mayo, 2025</span>
+</div>
+</li>
+<li>
+<img alt="Popular" src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"/>
+<div>
+<h4>Los Mejores Libros de Crecimiento Personal</h4>
+<span class="date">28 Abril, 2025</span>
+</div>
+</li>
+<li>
+<img alt="Popular" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"/>
+<div>
+<h4>Guía para Fotografía de Paisajes</h4>
+<span class="date">10 Abril, 2025</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Categorías -->
+<div>
+<h3>Categorías</h3>
+<ul class="categories">
+<li><a href="#">Tecnología <span>(24)</span></a></li>
+<li><a href="#">Viajes <span>(18)</span></a></li>
+<li><a href="#">Salud <span>(15)</span></a></li>
+<li><a href="#">Educación <span>(12)</span></a></li>
+<li><a href="#">Finanzas <span>(9)</span></a></li>
+</ul>
+</div>
+<!-- Nube de Etiquetas -->
+<div>
+<h3>Etiquetas Populares</h3>
+<div class="tag-cloud">
+<span class="tag">Programación</span>
+<span class="tag">Viajes</span>
+<span class="tag">IA</span>
+<span class="tag">Salud</span>
+<span class="tag">Productividad</span>
+<span class="tag">Fotografía</span>
+<span class="tag">Finanzas</span>
+<span class="tag">Libros</span>
+</div>
+</div>
+<!-- Boletín -->
+<div class="newsletter">
+<h3>Boletín Informativo</h3>
+<p>Suscríbete para recibir las últimas publicaciones directamente en tu email.</p>
+<input placeholder="Tu correo electrónico" type="email"/>
+<button class="btn">Suscribirme</button>
+</div>
+</aside>
+</main>
+<!-- Pie de página -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-column">
+<h3>BlogSimple</h3>
+<p>Un espacio para compartir conocimiento, experiencias y perspectivas sobre diversos temas que nos apasionan.</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="footer-column">
+<h3>Enlaces Rápidos</h3>
+<ul class="footer-links">
+<li><a href="#">Inicio</a></li>
+<li><a href="#">Acerca de</a></li>
+<li><a href="#">Artículos Populares</a></li>
+<li><a href="#">Categorías</a></li>
+<li><a href="#">Contacto</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Categorías</h3>
+<ul class="footer-links">
+<li><a href="#">Tecnología</a></li>
+<li><a href="#">Viajes</a></li>
+<li><a href="#">Salud</a></li>
+<li><a href="#">Educación</a></li>
+<li><a href="#">Finanzas</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Contacto</h3>
+<p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+<p><i class="fas fa-envelope"></i> contacto@blogsimple.com</p>
+<p><i class="fas fa-phone"></i> +34 912 345 678</p>
+</div>
+</div>
+<div class="copyright">
+<p>© 2025 BlogSimple. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
+</body>
+</html>

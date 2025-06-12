@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2.5999999mm"
+   height="4mm"
+   viewBox="0 0 2.5999998 4"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.1-rc (d9e8dc1fe0, 2025-03-10)"
+   sodipodi:docname="s.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="45.725699"
+     inkscape:cx="3.6959522"
+     inkscape:cy="8.9227723"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="true">
+    <inkscape:grid
+       id="grid2"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.1"
+       spacingy="0.099999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="40"
+       enabled="true"
+       visible="true"
+       dotted="false" />
+    <sodipodi:guide
+       position="2.8,0.79999982"
+       orientation="0,-1"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="2.9,3.1999997"
+       orientation="0,-1"
+       id="guide2"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path4"
+       style="fill:#1a1a1a;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round"
+       d="M 2.0996134 0.80046794 C 1.4379535 0.80063654 0.90137257 1.3374159 0.90123698 1.9998779 L 0.90072021 1.9998779 C 0.90078506 2.4139641 0.58748803 2.749623 0.20050456 2.749703 L 0.19998779 3.2850708 L 0.20050456 3.2850708 C 0.86370273 3.2848902 1.4013311 2.7095239 1.4014648 1.9998779 L 1.4009481 1.9998779 C 1.4008845 1.613323 1.7140435 1.3002536 2.1001302 1.300179 L 2.1001302 0.80046794 L 2.0996134 0.80046794 z " />
+  </g>
+</svg>
